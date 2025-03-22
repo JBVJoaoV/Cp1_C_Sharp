@@ -1,36 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class Program
 {
     static Random r = new Random();
-    static int chanceRoleta = 6; // Começa com 1 em 6 chances de perder
+    static int chanceRoleta = 6;
+    static Dictionary<string, (int vitorias, int partidas)> ranking = new Dictionary<string, (int, int)>();
+    static string jogadorAtual;
 
     static void Main()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
-        Console.WriteLine("😀 Olá! Vamos jogar Jokenpô versão Round 6?");
-        Console.WriteLine("1 - Sim ou 0 - Não");
-
-        char escolha;
-        do
+        Console.Write("Digite seu nome: ");
+        while (true)
         {
-            escolha = Console.ReadKey().KeyChar;
-            Console.WriteLine();
-            if (escolha != '1' && escolha != '0')
-            {
-                Console.WriteLine("Entrada inválida. Digite 1 para jogar ou 0 para sair.");
-            }
-        } while (escolha != '1' && escolha != '0');
-
-        if (escolha == '1')
-        {
-            bool continuar = true;
-            while (continuar)
-            {
-                continuar = JogarRodada();
-            }
+            jogadorAtual = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(jogadorAtual))
+                break;
+            Console.WriteLine("Nome inválido. Por favor, digite um nome válido.");
         }
-        Console.WriteLine("👋 Tchau! Até a próxima");
+
+        bool continuar = true;
+        while (continuar)
+        {
+            continuar = JogarRodada();
+        }
     }
 
     static bool JogarRodada()
@@ -52,6 +46,7 @@ class Program
         Console.WriteLine($"\nComputador escolheu: {ConverterParaNome(maoEscolhidaComputador)}");
 
         int resultado = DeterminarVencedor(maoEscolhidaJogador, maoEscolhidaComputador);
+        AtualizarRanking(resultado);
 
         if (resultado == 0) Console.WriteLine("Empate!");
         else if (resultado == 1) Console.WriteLine("Você venceu esta rodada!");
@@ -59,23 +54,56 @@ class Program
 
         if (resultado != 0)
         {
-            Console.WriteLine("💀 Iniciando a Roleta Russa..."); 
+            Console.WriteLine("💀 Iniciando a Roleta Russa...");
             if (RoletaRussa())
             {
-                Console.WriteLine("🔫 Perdeu no Jokenpô e na Roleta Russa! Jogo encerrado.");
-                return false;
+                Console.WriteLine("🔫 Perdeu na Roleta Russa! Fim de jogo para {0}.", jogadorAtual);
+                ExibirRanking();
+                NovoJogador();
             }
             else
             {
                 Console.WriteLine("😰 Sobreviveu à Roleta Russa! Continuamos...");
-                chanceRoleta--; // Diminui as chances de sobrevivência a cada rodada
-                if (chanceRoleta < 1) chanceRoleta = 1; // Garante que haja um perdedor no maximo apos 6 rodadas
+                chanceRoleta--;
+                if (chanceRoleta < 1) chanceRoleta = 1;
             }
         }
 
         Console.WriteLine("\nPressione qualquer tecla para continuar...");
         Console.ReadKey();
         return true;
+    }
+
+    static void AtualizarRanking(int resultado)
+    {
+        if (!ranking.ContainsKey(jogadorAtual))
+            ranking[jogadorAtual] = (0, 0);
+
+        var (vitorias, partidas) = ranking[jogadorAtual];
+        ranking[jogadorAtual] = (vitorias + (resultado == 1 ? 1 : 0), partidas + 1);
+    }
+
+    static void ExibirRanking()
+    {
+        Console.WriteLine("\n🏆 Ranking:");
+        foreach (var jogador in ranking)
+        {
+            double porcentagem = jogador.Value.partidas > 0 ? (double)jogador.Value.vitorias / jogador.Value.partidas * 100 : 0;
+            Console.WriteLine($"{jogador.Key}: {porcentagem:F2}% de vitórias ({jogador.Value.vitorias}/{jogador.Value.partidas})");
+        }
+    }
+
+    static void NovoJogador()
+    {
+        Console.Write("Digite o nome do próximo jogador: ");
+        while (true)
+        {
+            jogadorAtual = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(jogadorAtual))
+                break;
+            Console.WriteLine("Nome inválido. Por favor, digite um nome válido.");
+        }
+        chanceRoleta = 6;
     }
 
     static int[] EscolherMaosJogador()
@@ -112,27 +140,21 @@ class Program
     {
         foreach (int mao in maosComputador)
         {
-            if (Vence(mao, maosJogador[0]) && Vence(mao, maosJogador[1]))
-                return mao;
-        }
-        foreach (int mao in maosComputador)
-        {
-            if (mao == maosJogador[0] || mao == maosJogador[1])
+            if (Vence(mao, maosJogador[0]) || Vence(mao, maosJogador[1]))
                 return mao;
         }
         return maosComputador[r.Next(0, 2)];
     }
 
+    static bool Vence(int a, int b)
+    {
+        return (a == 0 && b == 2) || (a == 1 && b == 0) || (a == 2 && b == 1);
+    }
+
     static int DeterminarVencedor(int jogador, int computador)
     {
         if (jogador == computador) return 0;
-        if (Vence(jogador, computador)) return 1;
-        return -1;
-    }
-
-    static bool Vence(int m1, int m2)
-    {
-        return (m1 == 0 && m2 == 2) || (m1 == 1 && m2 == 0) || (m1 == 2 && m2 == 1);
+        return Vence(jogador, computador) ? 1 : -1;
     }
 
     static bool RoletaRussa()
