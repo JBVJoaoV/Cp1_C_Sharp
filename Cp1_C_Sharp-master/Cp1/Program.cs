@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
@@ -86,10 +87,32 @@ class Program
     static void ExibirRanking()
     {
         Console.WriteLine("\n🏆 Ranking:");
-        foreach (var jogador in ranking)
+        if (ranking.Count == 0)
         {
-            double porcentagem = jogador.Value.partidas > 0 ? (double)jogador.Value.vitorias / jogador.Value.partidas * 100 : 0;
-            Console.WriteLine($"{jogador.Key}: {porcentagem:F2}% de vitórias ({jogador.Value.vitorias}/{jogador.Value.partidas})");
+            Console.WriteLine("Ainda não há jogadores no ranking.");
+            return;
+        }
+
+        var rankingOrdenado = ranking.OrderByDescending(j => (double)j.Value.vitorias / j.Value.partidas)
+                                      .ThenByDescending(j => j.Value.vitorias)
+                                      .ToList();
+
+        int maxExibir = Math.Min(3, rankingOrdenado.Count);
+        string[] medalhas = { "🥇", "🥈", "🥉" };
+
+        for (int i = 0; i < maxExibir; i++)
+        {
+            var jogador = rankingOrdenado[i];
+            double porcentagem = (double)jogador.Value.vitorias / jogador.Value.partidas * 100;
+            Console.WriteLine($"{medalhas[i]} {jogador.Key}: {porcentagem:F2}% de vitórias ({jogador.Value.vitorias}/{jogador.Value.partidas})");
+        }
+
+        int posicaoJogadorAtual = rankingOrdenado.FindIndex(j => j.Key == jogadorAtual) + 1;
+        if (posicaoJogadorAtual > 3)
+        {
+            var jogador = ranking[jogadorAtual];
+            double porcentagem = (double)jogador.vitorias / jogador.partidas * 100;
+            Console.WriteLine($"📌 Seu ranking: {posicaoJogadorAtual}º lugar com {porcentagem:F2}% de vitórias ({jogador.vitorias}/{jogador.partidas}).");
         }
     }
 
@@ -146,24 +169,8 @@ class Program
         return maosComputador[r.Next(0, 2)];
     }
 
-    static bool Vence(int a, int b)
-    {
-        return (a == 0 && b == 2) || (a == 1 && b == 0) || (a == 2 && b == 1);
-    }
-
-    static int DeterminarVencedor(int jogador, int computador)
-    {
-        if (jogador == computador) return 0;
-        return Vence(jogador, computador) ? 1 : -1;
-    }
-
-    static bool RoletaRussa()
-    {
-        return r.Next(1, chanceRoleta + 1) == 1;
-    }
-
-    static string ConverterParaNome(int mao)
-    {
-        return mao == 0 ? "Pedra ✊" : mao == 1 ? "Papel ✋" : "Tesoura ✌";
-    }
+    static bool Vence(int a, int b) => (a == 0 && b == 2) || (a == 1 && b == 0) || (a == 2 && b == 1);
+    static int DeterminarVencedor(int jogador, int computador) => jogador == computador ? 0 : (Vence(jogador, computador) ? 1 : -1);
+    static bool RoletaRussa() => r.Next(1, chanceRoleta + 1) == 1;
+    static string ConverterParaNome(int mao) => mao == 0 ? "Pedra ✊" : mao == 1 ? "Papel ✋" : "Tesoura ✌";
 }
