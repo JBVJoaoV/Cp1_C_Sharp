@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\joaop\\OneDrive\\Área de Trabalho\\facul\\cp_c_sharp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
+      "projectUniqueName": "C:\\Users\\joaop\\OneDrive\\Área de Trabalho\\facul\\cp1\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
       "projectName": "Cp1",
-      "projectPath": "C:\\Users\\joaop\\OneDrive\\Área de Trabalho\\facul\\cp_c_sharp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
+      "projectPath": "C:\\Users\\joaop\\OneDrive\\Área de Trabalho\\facul\\cp1\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
       "packagesPath": "C:\\Users\\joaop\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\joaop\\OneDrive\\Área de Trabalho\\facul\\cp_c_sharp\\Cp1_C_Sharp-master\\Cp1\\obj\\",
+      "outputPath": "C:\\Users\\joaop\\OneDrive\\Área de Trabalho\\facul\\cp1\\Cp1_C_Sharp-master\\Cp1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

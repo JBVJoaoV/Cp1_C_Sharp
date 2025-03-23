@@ -34,7 +34,7 @@ class Program
         Console.WriteLine("\nEscolha suas duas mãos: 0 - Pedra ✊, 1 - Papel ✋, 2 - Tesoura ✌");
 
         int[] maosJogador = EscolherMaosJogador();
-        int[] maosComputador = { r.Next(0, 3), r.Next(0, 3) };
+        int[] maosComputador = EscolherMaoComputador();
 
         Console.WriteLine($"\nSuas mãos: {ConverterParaNome(maosJogador[0])} e {ConverterParaNome(maosJogador[1])}");
         Console.WriteLine($"Mãos do Computador: {ConverterParaNome(maosComputador[0])} e {ConverterParaNome(maosComputador[1])}");
@@ -157,6 +157,19 @@ class Program
             }
             Console.WriteLine($"Entrada inválida. Escolha um número entre {min} e {max}.");
         }
+    }
+
+    static int[] EscolherMaoComputador()
+    {
+        int mao1 = r.Next(0, 3); // Escolhe a primeira mão aleatória
+        int mao2;
+
+        do
+        {
+            mao2 = r.Next(0, 3); // Gera uma nova mão para a segunda mão
+        } while (mao2 == mao1); // Verifica se a segunda mão é igual à primeira
+
+        return new int[] { mao1, mao2 }; // Retorna as duas mãos do computador
     }
 
     static int EscolherMaoComputador(int[] maosComputador, int[] maosJogador)
