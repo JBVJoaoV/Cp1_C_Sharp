@@ -5,8 +5,8 @@ using System.Linq;
 class Program
 {
     static Random r = new Random();
-    static int chanceRoleta = 6;
-    static Dictionary<string, (int vitorias, int partidas)> ranking = new Dictionary<string, (int, int)>();
+    static byte chanceRoleta = 6;
+    static Dictionary<string, (byte vitorias, byte partidas)> ranking = new Dictionary<string, (byte, byte)>();
     static string jogadorAtual;
 
     static void Main()
@@ -33,20 +33,20 @@ class Program
         Console.Clear();
         Console.WriteLine("\nEscolha suas duas mãos: 0 - Pedra ✊, 1 - Papel ✋, 2 - Tesoura ✌");
 
-        int[] maosJogador = EscolherMaosJogador();
-        int[] maosComputador = EscolherMaoComputador();
+        byte[] maosJogador = EscolherMaosJogador();
+        byte[] maosComputador = EscolherMaoComputador();
 
         Console.WriteLine($"\nSuas mãos: {ConverterParaNome(maosJogador[0])} e {ConverterParaNome(maosJogador[1])}");
         Console.WriteLine($"Mãos do Computador: {ConverterParaNome(maosComputador[0])} e {ConverterParaNome(maosComputador[1])}");
 
         Console.WriteLine("Escolha qual mão jogar (0 - Primeira, 1 - Segunda): ");
-        int escolhaJogador = LerEntradaValida(0, 1);
-        int maoEscolhidaJogador = maosJogador[escolhaJogador];
+        byte escolhaJogador = LerEntradaValida(0, 1);
+        byte maoEscolhidaJogador = maosJogador[escolhaJogador];
 
-        int maoEscolhidaComputador = EscolherMaoComputador(maosComputador, maosJogador);
+        byte maoEscolhidaComputador = EscolherMaoComputador(maosComputador, maosJogador);
         Console.WriteLine($"\nComputador escolheu: {ConverterParaNome(maoEscolhidaComputador)}");
 
-        int resultado = DeterminarVencedor(maoEscolhidaJogador, maoEscolhidaComputador);
+        byte resultado = DeterminarVencedor(maoEscolhidaJogador, maoEscolhidaComputador);
         AtualizarRanking(resultado);
 
         if (resultado == 0) Console.WriteLine("Empate!");
@@ -75,12 +75,12 @@ class Program
         return true;
     }
 
-    static void AtualizarRanking(int resultado)
+    static void AtualizarRanking(byte resultado)
     {
         if (!ranking.ContainsKey(jogadorAtual))
             ranking[jogadorAtual] = (0, 0);
 
-        var (vitorias, partidas) = ranking[jogadorAtual];
+        byte (vitorias, partidas) = ranking[jogadorAtual];
         ranking[jogadorAtual] = (vitorias + (resultado == 1 ? 1 : 0), partidas + 1);
     }
 
@@ -97,20 +97,20 @@ class Program
                                       .ThenByDescending(j => j.Value.vitorias)
                                       .ToList();
 
-        int maxExibir = Math.Min(3, rankingOrdenado.Count);
+        byte maxExibir = Math.Min(3, rankingOrdenado.Count);
         string[] medalhas = { "🥇", "🥈", "🥉" };
 
-        for (int i = 0; i < maxExibir; i++)
+        for (byte i = 0; i < maxExibir; i++)
         {
             var jogador = rankingOrdenado[i];
             double porcentagem = (double)jogador.Value.vitorias / jogador.Value.partidas * 100;
             Console.WriteLine($"{medalhas[i]} {jogador.Key}: {porcentagem:F2}% de vitórias ({jogador.Value.vitorias}/{jogador.Value.partidas})");
         }
 
-        int posicaoJogadorAtual = rankingOrdenado.FindIndex(j => j.Key == jogadorAtual) + 1;
+        byte posicaoJogadorAtual = rankingOrdenado.FindIndex(j => j.Key == jogadorAtual) + 1;
         if (posicaoJogadorAtual > 3)
         {
-            var jogador = ranking[jogadorAtual];
+            byte jogador = ranking[jogadorAtual];
             double porcentagem = (double)jogador.vitorias / jogador.partidas * 100;
             Console.WriteLine($"📌 Seu ranking: {posicaoJogadorAtual}º lugar com {porcentagem:F2}% de vitórias ({jogador.vitorias}/{jogador.partidas}).");
         }
@@ -131,8 +131,8 @@ class Program
 
     static int[] EscolherMaosJogador()
     {
-        int[] maos = new int[2];
-        for (int i = 0; i < 2; i++)
+        byte[] maos = new byte[2];
+        for (byte i = 0; i < 2; i++)
         {
             Console.Write($"Escolha a {i + 1}ª mão: ");
             maos[i] = LerEntradaValida(0, 2);
@@ -140,9 +140,9 @@ class Program
         return maos;
     }
 
-    static int LerEntradaValida(int min, int max)
+    static int LerEntradaValida(byte min, byte max)
     {
-        int valor;
+        byte valor;
         while (true)
         {
             char entrada = Console.ReadKey().KeyChar;
@@ -159,22 +159,22 @@ class Program
         }
     }
 
-    static int[] EscolherMaoComputador()
+    static byte[] EscolherMaoComputador()
     {
-        int mao1 = r.Next(0, 3); // Escolhe a primeira mão aleatória
-        int mao2;
+        byte mao1 = r.Next(0, 3); // Escolhe a primeira mão aleatória
+        byte mao2;
 
         do
         {
             mao2 = r.Next(0, 3); // Gera uma nova mão para a segunda mão
         } while (mao2 == mao1); // Verifica se a segunda mão é igual à primeira
 
-        return new int[] { mao1, mao2 }; // Retorna as duas mãos do computador
+        return new byte[] { mao1, mao2 }; // Retorna as duas mãos do computador
     }
 
-    static int EscolherMaoComputador(int[] maosComputador, int[] maosJogador)
+    static byte EscolherMaoComputador(byte[] maosComputador, byte[] maosJogador)
     {
-        foreach (int mao in maosComputador)
+        foreach (byte mao in maosComputador)
         {
             if (Vence(mao, maosJogador[0]) || Vence(mao, maosJogador[1]))
                 return mao;
@@ -182,8 +182,8 @@ class Program
         return maosComputador[r.Next(0, 2)];
     }
 
-    static bool Vence(int a, int b) => (a == 0 && b == 2) || (a == 1 && b == 0) || (a == 2 && b == 1);
-    static int DeterminarVencedor(int jogador, int computador) => jogador == computador ? 0 : (Vence(jogador, computador) ? 1 : -1);
+    static bool Vence(byte a, byte b) => (a == 0 && b == 2) || (a == 1 && b == 0) || (a == 2 && b == 1);
+    static int DeterminarVencedor(byte jogador, byte computador) => jogador == computador ? 0 : (Vence(jogador, computador) ? 1 : -1);
     static bool RoletaRussa() => r.Next(1, chanceRoleta + 1) == 1;
-    static string ConverterParaNome(int mao) => mao == 0 ? "Pedra ✊" : mao == 1 ? "Papel ✋" : "Tesoura ✌";
+    static string ConverterParaNome(byte mao) => mao == 0 ? "Pedra ✊" : mao == 1 ? "Papel ✋" : "Tesoura ✌";
 }
