@@ -235,12 +235,13 @@ class Program
         int nivelMaoJogador1 = AnalisarMao(maosJogador[0], maosComputador);
         int nivelMaoJogador2 = AnalisarMao(maosJogador[1], maosComputador);
 
+        // Variaveis para armazenar as mãos escolhidas
         int melhorMaoComputador = 0;
         int piorMaoComputador = 0;
         int melhorMaoJogador = 0;
         int maoEscolhida = 0;
 
-        // Comparar os níveis das duas mãos do computador e escolher a melhor
+        // Comparar os níveis das duas mãos do computador e escolher a melhor e a pior mão do computador
         if (nivelMaoComputador1 < nivelMaoComputador2) // Se a mão 1 for melhor (nível menor)
         {
             melhorMaoComputador = maosComputador[0];
@@ -272,23 +273,23 @@ class Program
         }
 
 
-        if (Vence(melhorMaoComputador, melhorMaoJogador))
+        if (Vence(melhorMaoComputador, melhorMaoJogador)) // Se a melhor mão do computador ganhar da melhor mão do jogador
         {
-            maoEscolhida = melhorMaoComputador;
+            maoEscolhida = melhorMaoComputador; // Escolhe a melhor mão do computador
         } 
-        else if (Vence(piorMaoComputador, melhorMaoJogador))
+        else if (Vence(piorMaoComputador, melhorMaoJogador)) // Se a pior mão do computador ganhar da melhor mão do jogador
         {
-            maoEscolhida = piorMaoComputador;
+            maoEscolhida = piorMaoComputador; // Escolhe a pior mão do computador
         } 
-        else if (melhorMaoComputador == melhorMaoJogador)
+        else if (melhorMaoComputador == melhorMaoJogador) // Se a melhor mão do computador empatar com a melhor mão do jogador
         {
-            maoEscolhida = melhorMaoComputador;
+            maoEscolhida = melhorMaoComputador; // Escolhe a melhor mão do computador
         }
-        else if (piorMaoComputador == melhorMaoJogador)
+        else if (piorMaoComputador == melhorMaoJogador) // Se a pior mão do computador empatar com a melhor mão do jogador
         {
-            maoEscolhida = piorMaoComputador;
+            maoEscolhida = piorMaoComputador; // Escolhe a pior mão do computador 
         }
-        else
+        else // Se nenhum dos casos se aplicar, escolhe aleatoriamente
         {
             maoEscolhida = maosComputador[r.Next(0, 2)];
         }
