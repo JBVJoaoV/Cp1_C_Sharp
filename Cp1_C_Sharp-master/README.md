@@ -1,9 +1,5 @@
-Trabalhar na UI para acrescentar a nota
+Link pra o githud caso de algum problema:
+https://github.com/JBVJoaoV/Cp1_C_Sharp.git
 
-Colocar os metodos na frente do metodo main
+Caso utilizar o git, usar a versão da branch main
 
-Verificar a nomenclatura de tudo
-
-Doc do codigo
-
-Gravar video da execução
