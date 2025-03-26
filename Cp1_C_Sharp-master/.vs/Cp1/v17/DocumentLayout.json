@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\labsfiap\\Desktop\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\",
+  "WorkspaceRootPath": "C:\\Users\\joaop\\OneDrive\\\u00C1rea de Trabalho\\facul\\cp\\Cp1_C_Sharp-master\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|c:\\users\\labsfiap\\desktop\\cp1_c_sharp\\cp1_c_sharp-master\\cp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|c:\\users\\joaop\\onedrive\\\u00E1rea de trabalho\\facul\\cp\\cp1_c_sharp-master\\cp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|solutionrelative:cp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|c:\\users\\labsfiap\\desktop\\cp1_c_sharp\\cp1_c_sharp-master\\cp1\\cp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|c:\\users\\joaop\\onedrive\\\u00E1rea de trabalho\\facul\\cp\\cp1_c_sharp-master\\cp1\\cp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|solutionrelative:cp1\\cp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -18,15 +18,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Cp1.csproj",
-              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
+              "DocumentMoniker": "C:\\Users\\joaop\\OneDrive\\\u00C1rea de Trabalho\\facul\\cp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
               "RelativeDocumentMoniker": "Cp1\\Cp1.csproj",
-              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
+              "ToolTip": "C:\\Users\\joaop\\OneDrive\\\u00C1rea de Trabalho\\facul\\cp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
               "RelativeToolTip": "Cp1\\Cp1.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -36,11 +44,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\Cp1\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\joaop\\OneDrive\\\u00C1rea de Trabalho\\facul\\cp\\Cp1_C_Sharp-master\\Cp1\\Program.cs",
               "RelativeDocumentMoniker": "Cp1\\Program.cs",
-              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\Cp1\\Program.cs",
+              "ToolTip": "C:\\Users\\joaop\\OneDrive\\\u00C1rea de Trabalho\\facul\\cp\\Cp1_C_Sharp-master\\Cp1\\Program.cs",
               "RelativeToolTip": "Cp1\\Program.cs",
-              "ViewState": "AQIAAN4AAAAAAAAAAAAmwDABAAABAAAA",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAUwCQBAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-20T12:35:12.211Z",
               "EditorCaption": ""

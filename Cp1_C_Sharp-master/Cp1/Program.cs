@@ -228,37 +228,88 @@ class Program
     static int EscolherMaoComputador(int[] maosComputador, int[] maosJogador)
     {
         // Analisando as mãos do computador e atribuindo um nível de 1 a 6 para cada uma
-        int nivelMao1 = AnalisarMao(maosComputador[0], maosJogador);
-        int nivelMao2 = AnalisarMao(maosComputador[1], maosJogador);
+        int nivelMaoComputador1 = AnalisarMao(maosComputador[0], maosJogador);
+        int nivelMaoComputador2 = AnalisarMao(maosComputador[1], maosJogador);
 
-        // Comparar os níveis das duas mãos e escolher a melhor
-        if (nivelMao1 < nivelMao2) // Se a mão 1 for melhor (nível menor)
+        // Analisa as mãos do jogador e atribui um nivel para elas
+        int nivelMaoJogador1 = AnalisarMao(maosJogador[0], maosComputador);
+        int nivelMaoJogador2 = AnalisarMao(maosJogador[1], maosComputador);
+
+        int melhorMaoComputador = 0;
+        int piorMaoComputador = 0;
+        int melhorMaoJogador = 0;
+        int maoEscolhida = 0;
+
+        // Comparar os níveis das duas mãos do computador e escolher a melhor
+        if (nivelMaoComputador1 < nivelMaoComputador2) // Se a mão 1 for melhor (nível menor)
         {
-            return maosComputador[0];
+            melhorMaoComputador = maosComputador[0];
+            piorMaoComputador = maosComputador[1];
         }
-        else if (nivelMao1 > nivelMao2) // Se a mão 2 for melhor
+        else if (nivelMaoComputador1 > nivelMaoComputador2) // Se a mão 2 for melhor
         {
-            return maosComputador[1];
+            melhorMaoComputador = maosComputador[1];
+            piorMaoComputador = maosComputador[0];
         }
         else // Se ambas as mãos tiverem o mesmo nível, escolher aleatoriamente
         {
-            return maosComputador[r.Next(0, 2)];
+            melhorMaoComputador = maosComputador[0];
+            piorMaoComputador = maosComputador[1];
         }
+
+        // Comparar os níveis das duas mãos do jogador e escolher a melhor
+        if (nivelMaoJogador1 < nivelMaoJogador2) // Se a mão 1 for melhor (nível menor)
+        {
+            melhorMaoJogador = maosJogador[0];
+        }
+        else if (nivelMaoJogador1 > nivelMaoJogador2) // Se a mão 2 for melhor
+        {
+            melhorMaoJogador = maosJogador[1];
+        }
+        else // Se ambas as mãos tiverem o mesmo nível, escolher aleatoriamente
+        {
+            melhorMaoJogador = maosJogador[r.Next(0, 2)];
+        }
+
+
+        if (Vence(melhorMaoComputador, melhorMaoJogador))
+        {
+            maoEscolhida = melhorMaoComputador;
+        } 
+        else if (Vence(piorMaoComputador, melhorMaoJogador))
+        {
+            maoEscolhida = piorMaoComputador;
+        } 
+        else if (melhorMaoComputador == melhorMaoJogador)
+        {
+            maoEscolhida = melhorMaoComputador;
+        }
+        else if (piorMaoComputador == melhorMaoJogador)
+        {
+            maoEscolhida = piorMaoComputador;
+        }
+        else
+        {
+            maoEscolhida = maosComputador[r.Next(0, 2)];
+        }
+
+        // Retorna a melhor mão do computador
+        return maoEscolhida;
     }
 
     // Analisando o nivel de uma mão do computador em relação às mãos do jogador
-    private static int AnalisarMao(int maoComputador, int[] maosJogador)
+    private static int AnalisarMao(int maoAnalisada, int[] maosJogadas)
     {
         // Inicializamos o nível como 0
         // Sendo o nivel 1 o melhor e 6 o pior
         int nivel = 0;
 
         // Comparar a mão do computador com a mão 1 do jogador
-        if (Vence(maoComputador, maosJogador[0])) // Se vencer, compara com a segunda mão
+        if (Vence(maoAnalisada, maosJogadas[0])) // Se vencer, compara com a segunda mão
         {
-            if (Vence(maoComputador, maosJogador[1])) // Se ganhar dar duas tem o melhor nivel
+            if (Vence(maoAnalisada, maosJogadas[1])) // Se ganhar dar duas tem o melhor nivel
                 nivel = 1;
-            else if (maoComputador == maosJogador[1]) // Se empatar para a segunda, tem nivel 2
+            else if (maoAnalisada == maosJogadas[1]) // Se empatar para a segunda, tem nivel 2
                 nivel = 2;
             else // Se perdeu para a segunda, tem nivel 4
             {
@@ -266,11 +317,11 @@ class Program
             }
         }
 
-        else if (maoComputador == maosJogador[0]) // Se empatar, compara com a segunda mão
+        else if (maoAnalisada == maosJogadas[0]) // Se empatar, compara com a segunda mão
         {
-            if (maoComputador == maosJogador[1]) // Se empatou nas duas, é nivel 3
+            if (maoAnalisada == maosJogadas[1]) // Se empatou nas duas, é nivel 3
                 nivel = 3;
-            else if (Vence(maoComputador, maosJogador[1])) // Se ganhou da segunda, nivel 2
+            else if (Vence(maoAnalisada, maosJogadas[1])) // Se ganhou da segunda, nivel 2
                 nivel = 2;
             else // Se perdeu para a segunda, nivel 5
             {
@@ -279,9 +330,9 @@ class Program
         }
         else // Se perdeu para a primeira 
         {
-            if (maoComputador == maosJogador[1]) // Se empata da segunda mão, nivel 5
+            if (maoAnalisada == maosJogadas[1]) // Se empata da segunda mão, nivel 5
                 nivel = 5;
-            else if (Vence(maoComputador, maosJogador[1])) // Se vence da segunda mão, nivel 4
+            else if (Vence(maoAnalisada, maosJogadas[1])) // Se vence da segunda mão, nivel 4
                 nivel = 4;
             else
                 nivel = 6;  // Se perde para ambas as mãos, nivel 6
