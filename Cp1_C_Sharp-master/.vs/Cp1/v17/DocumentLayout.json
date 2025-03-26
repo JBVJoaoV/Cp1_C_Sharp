@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\joaop\\Downloads\\cp\\Cp1_C_Sharp-master\\",
+  "WorkspaceRootPath": "C:\\Users\\gabri\\source\\repos\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|c:\\users\\joaop\\downloads\\cp\\cp1_c_sharp-master\\cp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|c:\\users\\gabri\\source\\repos\\cp1_c_sharp\\cp1_c_sharp-master\\cp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|solutionrelative:cp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|c:\\users\\joaop\\downloads\\cp\\cp1_c_sharp-master\\cp1\\cp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|c:\\users\\gabri\\source\\repos\\cp1_c_sharp\\cp1_c_sharp-master\\cp1\\cp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{E46BC8FB-0C60-45C6-B63C-13C23E66A247}|Cp1\\Cp1.csproj|solutionrelative:cp1\\cp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -18,17 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Cp1",
-              "DocumentMoniker": "C:\\Users\\joaop\\Downloads\\cp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
+              "Title": "Cp1.csproj",
+              "DocumentMoniker": "C:\\Users\\gabri\\Source\\Repos\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
               "RelativeDocumentMoniker": "Cp1\\Cp1.csproj",
-              "ToolTip": "C:\\Users\\joaop\\Downloads\\cp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
+              "ToolTip": "C:\\Users\\gabri\\Source\\Repos\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\Cp1\\Cp1.csproj",
               "RelativeToolTip": "Cp1\\Cp1.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-03-25T16:26:31.829Z",
               "EditorCaption": ""
@@ -37,11 +41,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\joaop\\Downloads\\cp\\Cp1_C_Sharp-master\\Cp1\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\gabri\\source\\repos\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\Cp1\\Program.cs",
               "RelativeDocumentMoniker": "Cp1\\Program.cs",
-              "ToolTip": "C:\\Users\\joaop\\Downloads\\cp\\Cp1_C_Sharp-master\\Cp1\\Program.cs",
+              "ToolTip": "C:\\Users\\gabri\\source\\repos\\Cp1_C_Sharp\\Cp1_C_Sharp-master\\Cp1\\Program.cs",
               "RelativeToolTip": "Cp1\\Program.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAJB3wLwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAowGMAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-20T12:35:12.211Z",
               "EditorCaption": ""

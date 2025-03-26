@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 class Program
 {
@@ -9,9 +10,34 @@ class Program
     static Dictionary<string, (int vitorias, int partidas)> ranking = new Dictionary<string, (int, int)>();
     static string jogadorAtual;
 
+
     static void Main()
-    {
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
+    { // Estilizando o console
+        Console.Title = "💣 JOKEMPO MENOS 1 - O JOGO"; // titulo do console
+        Console.BackgroundColor = ConsoleColor.DarkBlue; // Cor do plano de fundo
+        Console.ForegroundColor = ConsoleColor.White; // Cor do texto
+        Console.Clear(); // Aplica as cores em todo o terminal
+        Console.OutputEncoding = System.Text.Encoding.UTF8; // possibilita o uso de emojis
+        // Arte ASCII gerada por meio do site https://patorjk.com/software/taag usando a fonte "3-D ASCII", usamos o @ antes da arte em si para evitar quebra de linhas 
+        Console.WriteLine(@"
+
+                ___  ________  ___  __    _______   ________   ________  ________                         _____     
+               |\  \|\   __  \|\  \|\  \ |\  ___ \ |\   ___  \|\   __  \|\   __  \                       / __  \    
+               \ \  \ \  \|\  \ \  \/  /|\ \   __/|\ \  \\ \  \ \  \|\  \ \  \|\  \        ____________ |\/_|\  \   
+             __ \ \  \ \  \\\  \ \   ___  \ \  \_|/_\ \  \\ \  \ \   ____\ \  \\\  \      |\____________\|/ \ \  \  
+            |\  \\_\  \ \  \\\  \ \  \\ \  \ \  \_|\ \ \  \\ \  \ \  \___|\ \  \\\  \     \|____________|    \ \  \ 
+            \ \________\ \_______\ \__\\ \__\ \_______\ \__\\ \__\ \__\    \ \_______\                        \ \__\
+             \|________|\|_______|\|__| \|__|\|_______|\|__| \|__|\|__|     \|_______|                         \|__|
+                                          
+
+
+                            Bem-vindo ao jogo JOKEMPO MENOS 1!
+                            Derrote o computador... e sobreviva à Roleta Russa 💀🔫                                                        
+        ");
+
+        Thread.Sleep(3000); // Espera 3 segundos antes de continuar com o jogo
+
+       
         Console.Write("Digite seu nome: ");
         while (true)
         {
@@ -56,6 +82,7 @@ class Program
         if (resultado != 0)
         {
             Console.WriteLine("💀 Iniciando a Roleta Russa...");
+            Thread.Sleep(3000); // 3 segundos de delay para criar um suspense.....
             if (RoletaRussa())
             {
                 Console.WriteLine("🔫 Perdeu na Roleta Russa! Fim de jogo para {0}.", jogadorAtual);
